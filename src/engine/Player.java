@@ -15,19 +15,20 @@ public class Player {
     Sprite sprite;
     SpriteObject spriteObject;
 
-    public Player(Engine engine) {
+    public Player(Engine engine, Level level) {
         this.engine = engine;
 
         this.sprite = this.engine.getRenderer().getSprite("knight");
-        this.spriteObject = new SpriteObject(this.sprite, 0, 200, this.engine.getRenderer().getLevel());
+        this.spriteObject = new SpriteObject(this.sprite, 0, 200, level);
     }
 
     public SpriteObject getSpriteObject() { return this.spriteObject; }
 
     public void display(Graphics graphics, Renderer renderer) {
-        if (renderer.getLevel() != null && renderer.getLevel() != this.spriteObject.getLevel()) {
+        /*if (renderer.getLevel() != null && renderer.getLevel() != this.spriteObject.getLevel()) {
             this.spriteObject = new SpriteObject(this.sprite, this.spriteObject.getX(), this.spriteObject.getY(), renderer.getLevel());
-        }
+        }*/
+        this.spriteObject.interact();
         this.spriteObject.display(graphics, renderer);
     }
 }

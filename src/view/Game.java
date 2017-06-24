@@ -31,7 +31,7 @@ public class Game {
         this.infos = new PlayerInfos();
         this.level = new Level("level1");
         this.ui = new UserInterface(this.engine, this.infos);
-        this.player = new Player(this.engine);
+        this.player = new Player(this.engine, this.level);
         this.controller = new Controller(this.player.getSpriteObject());
     }
 

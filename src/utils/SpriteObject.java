@@ -59,9 +59,15 @@ public class SpriteObject {
         }
     }
 
+    public void interact(int x, int y) {
+        if (level.isValid(x, y, SPRITE_BOX_WIDTH, SPRITE_BOX_HEIGHT)){
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     public void display(Graphics graphics, Renderer renderer) {
-        this.x += this.vx;
-        this.y += this.vy;
+        this.interact(this.x+this.vx, this.y+this.vy);
         this.vx = this.vy = 0;
 
         graphics.drawImage(this.sprite.getBuffer(), this.getX(), this.getY(), null);
